@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vota por el Profe Lafiosca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px 0;
+        }
+        h1 {
+            margin: 0;
+        }
+        .vote-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .vote-button:hover {
+            background-color: #0056b3;
+        }
+        #vote-count {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .comments-section {
+            margin-top: 30px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-top: 10px;
+        }
+        button.submit-comment {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Vota por el Profe Lafiosca!</h1>
+    </header>
+    <main>
+        <p>Haz que el profe Lafiosca gane. ¡Tu voto cuenta!</p>
+        <button class="vote-button" onclick="incrementVote()">Votar por Lafiosca</button>
+        <div id="vote-count">Votos: 0</div>
+        
+        <div class="comments-section">
+            <h2>Deja tu comentario</h2>
+            <textarea id="comment-box" placeholder="Escribe tu mensaje aquí..."></textarea><br>
+            <button class="submit-comment" onclick="submitComment()">Enviar comentario</button>
+            <div id="comments"></div>
+        </div>
+    </main>
+    <footer>
+        <p>Gracias por tu apoyo a Lafiosca.</p>
+    </footer>
+
+    <script>
+        let voteCount = 0;
+        function incrementVote() {
+            voteCount++;
+            document.getElementById('vote-count').innerText = "Votos: " + voteCount;
+        }
+
+        function submitComment() {
+            const commentBox = document.getElementById('comment-box');
+            const comment = commentBox.value;
+            if (comment.trim() !== "") {
+                const commentsDiv = document.getElementById('comments');
+                const newComment = document.createElement('p');
+                newComment.innerText = comment;
+                commentsDiv.appendChild(newComment);
+                commentBox.value = "";
+            } else {
+                alert("Por favor escribe un comentario antes de enviarlo.");
+            }
+        }
+    </script>
+</body>
+</html>
